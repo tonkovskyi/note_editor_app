@@ -1,38 +1,171 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css");
+
+* {
+  box-sizing: border-box;
+}
+
+/* GLOBAL STYLES */
+@font-face {
+  font-family: "Virgil";
+  src: url("https://excalidraw.com/Virgil.woff2");
+}
+
+body,
 .App {
-  text-align: center;
+  font-family: "Virgil";
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-size: 20px;
+  background: white;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+button {
+  background: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+  cursor: pointer;
+}
+button:hover {
+  color: #04c;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app-border {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  border: 2px solid black;
+  margin: 20px 20px 500px 20px;
+  height: 96%;
+}
+
+/* SIDEBAR STYLES */
+
+.app-sidebar {
+  width: 30%;
+  height: 55vh;
+}
+
+.app-sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.app-buttons {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 20px;
+}
+.button-new-save {
+  padding: 10px 50px;
+  border: 2px solid black;
+}
+.button-new-save:hover {
+  border: 2px solid #04c;
+}
+
+.app-sidebar-notes {
+  height: calc(100% - 78px);
+  overflow-y: auto;
+}
+.app-sidebar-note {
+  display: flex;
+  justify-content: center;
+  padding: 25px;
+  cursor: pointer;
+}
+.note-title {
+  margin: 25px 25px 25px 25px;
+  max-width: 100%; 
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+}
+.sidebar-note-title {
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid black;
+  width: 100%;
+  
+}
+
+.sidebar-note-title:hover {
+  background: rgb(224, 224, 224);
+}
+.sidebar-note-title.active {
+  background: #08c;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* NOTE EDITOR/PREVIEW (MAIN) STYLES */
+
+.search {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: 5px 15px;
+  margin: 25px 25px 0;
+  border: 2px solid black;
+  width: 60%;
+
+  }
+
+.search-input {
+  width: 100%;
+  height: 40px;
+  padding: 11px;
+  border: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.search-input:active, :hover, :focus {
+  outline: 0;
+  outline-offset: 0;
+}
+
+.main-title-block {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px 0;
+  margin-bottom: 0;
+}
+
+
+.app-main {
+  width: 70%;
+  height: 100%;
+}
+
+.no-active-note {
+  position: absolute;
+  top: 25%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  color: #999;
+}
+
+/* Editing */
+.app-main-note-edit {
+  margin: 25px;
+  padding: 5px 25px;
+  border: 2px solid black;
+}
+
+.app-main-note-edit input,
+textarea {
+  display: block;
+  border: 2px solid black;
+  margin-bottom: 20px;
+  width: 100%;
+  height: 400px;
+  padding: 10px;
+  resize: none;
+}
+#title  {
+width: 60%;
+}
+.app-main-note-edit input {
+  height: 50px;
 }
