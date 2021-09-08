@@ -1,7 +1,7 @@
 import bin from "../images/bin.png";
 import magnifier from "../images/magnifier.png";
 
-const Main = ({ onDeleteNote, activeNote, onUpdateNote, notes }) => {
+const Main = ({ onDeleteNote, activeNote, onUpdateNote }) => {
   const onEditField = (key, value) => {
     onUpdateNote({
       ...activeNote,
@@ -10,7 +10,20 @@ const Main = ({ onDeleteNote, activeNote, onUpdateNote, notes }) => {
   };
 
   if (!activeNote)
-    return <div className="no-active-note">List of notes is empty</div>;
+    return (
+      <div className="app-main">
+        <div className="search">
+          <input
+            type="text"
+            placeholder="Search by title"
+            className="search-input"
+          />
+          <img src={magnifier} alt="search" style={{cursor: 'pointer'}} />
+        </div>
+
+        <div className="no-active-note">No Active Note</div>
+      </div>
+    );
 
   return (
     <div className="app-main">
@@ -20,14 +33,19 @@ const Main = ({ onDeleteNote, activeNote, onUpdateNote, notes }) => {
           placeholder="Search by title"
           className="search-input"
         />
-        <img src={magnifier} alt="search" />
+        <img src={magnifier} alt="search" style={{cursor: 'pointer'}} />
       </div>
       <div className="app-main-note-edit">
         <div className="main-title-block">
           <p>Title</p>
-          {notes.map((note) => (
-          <img src={bin} alt="Delete" height={50} width={41} onClick={() => onDeleteNote(note.id)}/>
-          ))}
+          <img
+            src={bin}
+            alt="Delete"
+            height={50}
+            width={41}
+            onClick={() => onDeleteNote(activeNote.id)}
+            style={{cursor: 'pointer'}}
+          />
         </div>
         <input
           type="text"
@@ -45,7 +63,9 @@ const Main = ({ onDeleteNote, activeNote, onUpdateNote, notes }) => {
           onChange={(e) => onEditField("body", e.target.value)}
         />
         <div className="app-buttons">
-          <button onClick={onEditField} className="button-new-save">Save</button>
+          <button onClick={onUpdateNote} className="button-new-save">
+            Save
+          </button>
         </div>
       </div>
     </div>

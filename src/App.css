@@ -14,6 +14,7 @@ body,
 .App {
   font-family: "Virgil";
   height: 100%;
+
   width: 100%;
   overflow: hidden;
   font-size: 20px;
@@ -38,6 +39,7 @@ button:hover {
   border: 2px solid black;
   margin: 20px 20px 500px 20px;
   height: 96%;
+  min-height: 69.5vh;
 }
 
 /* SIDEBAR STYLES */
@@ -67,7 +69,8 @@ button:hover {
 }
 
 .app-sidebar-notes {
-  height: calc(100% - 78px);
+  height: 96%;
+  min-height: 650px;
   overflow-y: auto;
 }
 .app-sidebar-note {
@@ -108,8 +111,8 @@ button:hover {
   padding: 5px 15px;
   margin: 25px 25px 0;
   border: 2px solid black;
-  width: 60%;
-
+  min-width: 500px;
+  width: 35vw;
   }
 
 .search-input {
@@ -139,11 +142,12 @@ button:hover {
 
 .no-active-note {
   position: absolute;
-  top: 25%;
+  top: 35%;
   left: 60%;
   transform: translate(-50%, -50%);
   font-size: 2rem;
   color: #999;
+
 }
 
 /* Editing */

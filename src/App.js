@@ -45,7 +45,6 @@ function App() {
           setActiveNote={setActiveNote}
         />
         <Main
-          notes={notes}
           onDeleteNote={onDeleteNote}
           activeNote={getActiveNote()}
           onUpdateNote={onUpdateNote}
