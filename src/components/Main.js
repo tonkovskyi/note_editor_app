@@ -1,13 +1,19 @@
+import {useState, useEffect} from "react";
 import bin from "../images/bin.png";
 import magnifier from "../images/magnifier.png";
 
 const Main = ({ onDeleteNote, activeNote, onUpdateNote }) => {
+  const [editingNote, setEditingNote] = useState(activeNote); 
   const onEditField = (key, value) => {
-    onUpdateNote({
-      ...activeNote,
+    setEditingNote({
+      ...editingNote,
       [key]: value,
     });
   };
+
+  useEffect(()=>{
+    setEditingNote({...activeNote});
+  }, [activeNote]);
 
   if (!activeNote)
     return (
@@ -51,7 +57,7 @@ const Main = ({ onDeleteNote, activeNote, onUpdateNote }) => {
           type="text"
           id="title"
           placeholder="Note title"
-          value={activeNote.title}
+          value={editingNote.title}
           onChange={(e) => onEditField("title", e.target.value)}
           autoFocus
         />
@@ -59,11 +65,11 @@ const Main = ({ onDeleteNote, activeNote, onUpdateNote }) => {
         <textarea
           id="body"
           placeholder="Write your note here..."
-          value={activeNote.body}
+          value={editingNote.body}
           onChange={(e) => onEditField("body", e.target.value)}
         />
         <div className="app-buttons">
-          <button onClick={onUpdateNote} className="button-new-save">
+          <button onClick={()=>onUpdateNote({...editingNote})} className="button-new-save">
             Save
           </button>
         </div>
