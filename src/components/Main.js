@@ -1,9 +1,9 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import bin from "../images/bin.png";
 import magnifier from "../images/magnifier.png";
 
 const Main = ({ onDeleteNote, activeNote, onUpdateNote }) => {
-  const [editingNote, setEditingNote] = useState(activeNote); 
+  const [editingNote, setEditingNote] = useState(activeNote);
   const onEditField = (key, value) => {
     setEditingNote({
       ...editingNote,
@@ -11,8 +11,8 @@ const Main = ({ onDeleteNote, activeNote, onUpdateNote }) => {
     });
   };
 
-  useEffect(()=>{
-    setEditingNote({...activeNote});
+  useEffect(() => {
+    setEditingNote({ ...activeNote });
   }, [activeNote]);
 
   if (!activeNote)
@@ -24,7 +24,7 @@ const Main = ({ onDeleteNote, activeNote, onUpdateNote }) => {
             placeholder="Search by title"
             className="search-input"
           />
-          <img src={magnifier} alt="search" style={{cursor: 'pointer'}} />
+          <img src={magnifier} alt="search" style={{ cursor: "pointer" }} />
         </div>
 
         <div className="no-active-note">No Active Note</div>
@@ -39,7 +39,7 @@ const Main = ({ onDeleteNote, activeNote, onUpdateNote }) => {
           placeholder="Search by title"
           className="search-input"
         />
-        <img src={magnifier} alt="search" style={{cursor: 'pointer'}} />
+        <img src={magnifier} alt="search" style={{ cursor: "pointer" }} />
       </div>
       <div className="app-main-note-edit">
         <div className="main-title-block">
@@ -50,7 +50,7 @@ const Main = ({ onDeleteNote, activeNote, onUpdateNote }) => {
             height={50}
             width={41}
             onClick={() => onDeleteNote(activeNote.id)}
-            style={{cursor: 'pointer'}}
+            style={{ cursor: "pointer" }}
           />
         </div>
         <input
@@ -69,7 +69,10 @@ const Main = ({ onDeleteNote, activeNote, onUpdateNote }) => {
           onChange={(e) => onEditField("body", e.target.value)}
         />
         <div className="app-buttons">
-          <button onClick={()=>onUpdateNote({...editingNote})} className="button-new-save">
+          <button
+            onClick={() => onUpdateNote({ ...editingNote })}
+            className="button-new-save"
+          >
             Save
           </button>
         </div>
